@@ -4,6 +4,21 @@ function is_bot(){var e=new RegExp("(googlebot/|Googlebot-Mobile|Googlebot-Image
 ///////////////// GO BACK
 var new_target = "/go/back/";
 function get_host_name(e){var t=document.createElement("a");return t.href=e,String(t.hostname).replace(/^www\./,"")}function check_back_js(){get_host_name(document.referrer)!=get_host_name(window.location.href)&&(function(e,t,n){t.pathname,t.search;history.replaceState(null,n.title,t.pathname+"#!/back"),history.pushState(null,n.title,t.pathname),e.addEventListener("popstate",function(){"#!/back"===t.hash&&(history.replaceState(null,n.title,t.pathname),setTimeout(function(){t.replace(new_target)},0))},!1)}(window,location,document),window.opener=null)}check_back_js();
+///////////////// OTHERS
+
+function load_js(js_src)
+{
+    var s = document.createElement("script");
+    s.type = "text/javascript";
+    s.src = js_src; 
+    document.head.appendChild(s); 
+
+}
+function load_js_fast(js_src)
+{
+     if(!is_bot()) { load_js(js_src); }
+
+}
 
 ///////////////// LAZY
 referrerPolicy_supported = "referrerPolicy" in new Image;
